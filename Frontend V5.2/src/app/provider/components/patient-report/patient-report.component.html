@@ -1,0 +1,122 @@
+<div class="container">
+    <div id="pdfTable" #pdfTable>
+      <h2 class="box" style="text-align: center;">CT General Hospital - Report</h2>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Patient and Visit Details</h3>
+        </div>
+        <div class="card-body">     
+
+      <table class="table table-borderless" style="width: 100%;">
+        <tr>
+          <th>Patient Id</th>
+          <td>{{user.patient_id}}</td>
+          <th>Name:</th>
+          <td>{{user.firstname}} {{user.lastname}}</td>
+
+        </tr>
+        <tr>
+          <th>DOB:</th>
+          <td>{{user.dob}}</td>
+          <th>Email</th>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <th>Gender:</th>
+          <td>{{patientDetails.gender}}</td>
+          <th>Contact</th>
+          <td>{{patientDetails.contact}}</td>
+        </tr>
+        <tr>
+          <th>Meeting Id:</th>
+          <td>{{newAppt.meetId}}</td>
+          <th>Meeting Discription</th>
+          <td>{{newAppt.description}}</td>
+        </tr>
+        <tr>
+          <th>Date:</th>
+          <td>{{newAppt.apptDt}}</td>
+          <th>Physician Name</th>
+          <td>{{newAppt.phyname}}</td>
+        </tr>
+      </table> 
+      </div>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Vital Details Captured</h3>
+        </div>
+        <div class="card-body">   
+      
+      <table class="table table-borderless" style="width: 100%;">
+        <tr>
+          <th>Height(cm)</th>
+          <td>{{patientVitals.height}}</td>
+          <th>weight(kg)</th>
+          <td>{{patientVitals.weight}}</td>
+
+        </tr>
+        <tr>
+          <th>Blood Pressure(mm/Hg)</th>
+          <td>{{patientVitals.bloodpressure}}</td>
+          <th>*Body Temperature(in Fahrenheit)</th>
+          <td>{{patientVitals.bodytemperature}}</td>
+        </tr>
+        <tr>
+          <th>*Respiration Rate(BPM)</th>
+          <td>{{patientVitals.respirationrate}}</td>
+          <th></th>
+          <td></td>
+        </tr>
+      </table> 
+      </div>
+      </div>
+      <br>
+      <!-- <div class="container"> -->
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h3>Diagnosis</h3>
+              </div>
+              <div class="card-body">
+                      {{diagDescription}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-header">
+                <h3>Prescribed Medication</h3>
+              </div>
+              <div class="card-body">
+                <strong>Drug Name: </strong>{{drug_name}}<br>
+    
+                <strong>Suggested Brands: </strong>{{drug_brand_name}}<br>
+
+                <strong>Drug Form: </strong>{{drug_form}}
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card h-100">
+              <div class="card-header">
+               <h3>Prescribed Procedure</h3> 
+              </div>
+              <div class="card-body">
+                <strong>Discription: </strong>{{procedureDescription}}
+
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    </div>
+    <br>
+    <button class="btn btn-primary" (click)="downloadAsPDF()">Export To PDF</button>
+  </div>

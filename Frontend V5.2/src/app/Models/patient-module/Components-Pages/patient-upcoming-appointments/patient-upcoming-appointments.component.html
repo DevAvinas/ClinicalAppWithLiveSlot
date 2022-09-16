@@ -1,0 +1,124 @@
+
+    <div *ngIf="alertflag1">
+      <br>
+      <br>
+      <br>
+      <br>
+    <div   class="alert alert-info" role="alert">
+      Sorry ! No upcoming appointments found
+     </div>
+    </div>
+<div *ngIf="!alertflag1" class="table-responsive">
+  <br>
+  <br>
+  <span class="green"></span> Today's Appointments
+  <span class="blue"></span> Upcoming Appointments
+  <br>
+  <br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Meeting Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Physician</th>
+        <th scope="col">Date</th>
+        <th scope="col">Time Slot</th>
+        <th scope="col">Status</th>
+
+        <th scope="col">Edit History</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        <!-- "Subject":item.Subject,
+        "description" :"string",
+        "physicianName":physicianName,
+        "dateofappointment":item.dateofappointment,
+        "Time_slot":item.startTime+'-'+item.endTime,
+        "History":"None","isToday":isToday -->
+      <tr *ngFor="let data of phyArr">
+        <td>{{data.meetingTitle}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.phyname}}</td>
+        <td><span *ngIf="data.isToday"class="badge bg-success"> {{data.apptDt}}</span>
+            <span *ngIf="!data.isToday" class="badge bg-primary"> {{data.apptDt}}</span>
+           </td>
+        <td>{{data.apptFrTime}} - {{data.apptToTime}}</td>
+        <td>{{data.status}}</td>
+           <td>
+        <button type="button" class="btn btn-primary" (click)="openModal(data.meetId)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          View
+        </button></td>
+        <!-- <td>Diagnosis</td>
+        <td>Eye Consultation</td>
+        <td>Dr. Khan</td>
+        <td><span class="badge bg-success"> 2022-04-01</span>
+           </td>
+        <td>10 A.M. - 11 A.M.</td>
+        <td>None</td> -->
+
+      </tr>
+      
+    </tbody>
+  </table>
+  </div>
+
+
+
+ <!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" [ngStyle]="{'display':display}" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">History</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Time Slot</th>
+              <th scope="col">Status</th>
+              <th scope="col">Reason</th>
+              <th scope="col">Modified At</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- "Subject":item.Subject,
+            "description" :"string",
+            "physicianName":physicianName,
+            "dateofappointment":item.dateofappointment,
+            "Time_slot":item.startTime+'-'+item.endTime,
+            "History":"None","isToday":isToday -->
+          <tr *ngFor="let data of historyArr">
+            <td> {{data.apptDt}}</td>
+            <td>{{data.apptFrTime}} - {{data.apptToTime}}</td>
+            <td>{{data.status}}</td>
+            <td>{{data.reason}}</td>
+            <td>{{data.modifiedTs}}</td>
+
+
+
+            <!-- <td>Diagnosis</td>
+            <td>Eye Consultation</td>
+            <td>Dr. Khan</td>
+            <td><span class="badge bg-success"> 2022-04-01</span>
+               </td>
+            <td>10 A.M. - 11 A.M.</td>
+            <td>None</td> -->
+    
+          </tr>
+          
+        </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

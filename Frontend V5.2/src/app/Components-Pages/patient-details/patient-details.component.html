@@ -1,0 +1,272 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Demgraphic Details
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapsed" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="container ">
+          <!-- <div class="form-group row justify-content-center"> -->
+        
+          <div class="card">
+            <div class="card-header">
+              Patient Details
+            </div>
+            <div class="card-body">
+              <form [formGroup]="patientDetailsForm" (ngSubmit)="savePatientDetails()">
+                <!-- Name control -->
+                <div class="form-group">
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      First Name</label>
+                    <div class="col-sm-8">
+        
+                      <input type="text" formControlName="firstName" class="form-control" placeholder="Enter First Name"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['firstName'].errors) || (!f['firstName'].pristine && f['firstName'].invalid) }">
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['firstName'].errors) || (!f['firstName'].pristine && f['firstName'].invalid)">
+                        <div *ngIf="f['firstName'].errors?.['required']">First Name is required</div>
+                        <div *ngIf="f['firstName'].errors?.['minlength']">Minimum 2 characters required</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Last Name</label>
+                    <div class="col-sm-8">
+        
+                      <input type="text" formControlName="lastName" class="form-control" placeholder="Enter Last Name"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['lastName'].errors) || (!f['lastName'].pristine && f['lastName'].invalid) }">
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['lastName'].errors) || (!f['lastName'].pristine && f['lastName'].invalid)">
+                        <div *ngIf="f['lastName'].errors?.['required']">Last Name is required</div>
+                        <div *ngIf="f['lastName'].errors?.['minlength']">Minimum 2 characters required</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Email*</label>
+                    <div class="col-sm-8">
+        
+                      <input type="text" formControlName="email" class="form-control" placeholder="Enter Email" [attr.disabled]="true"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['email'].errors) || (!f['email'].pristine && f['email'].invalid) }">
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['email'].errors) || (!f['email'].pristine && f['email'].invalid)">
+                        <div *ngIf="f['email'].errors?.['required']">Email cannot be blank</div>
+                        <div *ngIf="f['email'].errors?.['email']">Incorrect email format</div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Date Of Birth*</label>
+                    <div class="col-sm-8">
+        
+                      <input type="date" name="dob" max="2022-03-24" formControlName="dob" class="form-control"
+                        (blur)="calAge()" placeholder="Enter DOB"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['dob'].errors) || (!f['dob'].pristine && f['dob'].invalid) }">
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['dob'].errors) || (!f['dob'].pristine && f['dob'].invalid)">
+                        <div *ngIf="f['dob'].errors?.['required']">Please enter a valid date.</div>
+                        <div *ngIf="f['dob'].errors?.['dob']">Please enter a valid date of birth.</div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="form-group row">
+                    <label class=" col-sm-4  col-form-label">
+                      Age</label>
+                    <div class="col-sm-2 ">
+                      <input type="text" formControlName="age" class="form-control" [attr.disabled]="true">
+                    </div>
+                  </div>
+        
+                  <div class="form-group required" formGroupName="address">
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Address</label><br>
+                      <hr style="width:5%; margin-right:60%;margin-left: 4%;">
+                    </div>
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Line1*</label>
+                      <div class="col-sm-8">
+                        <textarea type="text" formControlName="line1" class="form-control"
+                          placeholder="Enter Building no, Street Address">
+                          <!-- [ngClass]="{ 'is-invalid': (submitted  && f['line1'].errors) || (!f['line1'].pristine && f['line1'].invalid) }"> -->
+                        </textarea>
+                        <!-- <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['address'].errors) || (!f['address'].pristine && f['address'].invalid)">
+                          <div *ngIf="f['address'].errors?.['required']">This Field cannot be blank</div>
+                          <div *ngIf="f['address'].errors?.['minlength']">Minimum 10 characters required</div>
+                        </div> -->
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Line2</label>
+                      <div class="col-sm-8">
+                        <textarea type="text" formControlName="line2" class="form-control" placeholder="Locality/Landmark">
+                          <!-- [ngClass]="{ 'is-invalid': (submitted  && f['line2'].errors) || (!f['line2'].pristine && f['line2'].invalid) }"> -->
+                        </textarea>
+                        <!-- <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['line2'].errors) || (!f['line2'].pristine && f['line2'].invalid)">
+                        </div> -->
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Postal Code</label>
+                      <div class="col-sm-8">
+        
+                        <input type="text" formControlName="postalcode" class="form-control" placeholder="Enter Postal Code" (blur)="fetchLocation()">
+                          <!-- [ngClass]="{ 'is-invalid': (submitted  && f['postalcode'].errors) || (!f['postalcode'].pristine && f['postalcode'].invalid) }" -->
+                        <!-- <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['postalcode'].errors) || (!f['postalcode'].pristine && f['postalcode'].invalid)">
+                          <div *ngIf="f['postalcode'].errors?.['required']">PostalCode is required</div>
+                        </div> -->
+                      </div>
+                    </div>
+        
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        City</label>
+                      <div class="col-sm-8">
+        
+                        <input type="text" formControlName="city" class="form-control" placeholder="Enter City">
+                          <!-- [ngClass]="{ 'is-invalid': (submitted  && f['city'].errors) || (!f['city'].pristine && f['city'].invalid) }" -->
+                        <!-- <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['city'].errors) || (!f['city'].pristine && f['city'].invalid)">
+                          <div *ngIf="f['city'].errors?.['required']">City is required</div>
+                        </div> -->
+                      </div>
+                    </div>
+        
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        State</label>
+                      <div class="col-sm-8">
+        
+                        <input type="text" formControlName="state" class="form-control" placeholder="Enter State">
+                          <!-- [ngClass]="{ 'is-invalid': (submitted  && f['state'].errors) || (!f['state'].pristine && f['state'].invalid) }"> -->
+                        <!-- <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['state'].errors) || (!f['state'].pristine && f['state'].invalid)">
+                          <div *ngIf="f['state'].errors?.['required']">State is required</div>
+                        </div> -->
+                      </div>
+                    </div>
+        
+                    <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Country</label>
+                      <div class="col-sm-8">
+        
+                        <input type="text" formControlName="country" class="form-control" placeholder="Enter Country">
+                          <!-- [ngClass]="{ 'is-invalid': (submitted  && a['country'].errors) || (!a['country'].pristine && a['country'].invalid) }"> -->
+                        <!-- <div class="invalid-feedback"
+                          *ngIf="(submitted  && a['country'].errors) || (!a['country'].pristine && a['country'].invalid)">
+                          <div *ngIf="a['country'].errors?.['required']">Country is required</div>
+                        </div> -->
+                      </div>
+                    </div>
+                    <!-- end of address group -->
+                  </div>
+        
+        
+                  <!-- contact -->
+        
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Dial Code</label>
+                    <div class="col-sm-2">
+                      <input type="text" formControlName="dialcode" class="form-control"
+                        >
+                    </div>
+                  </div>
+        
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Contact</label>
+                    <div class="col-sm-8">
+                      <input type="text" formControlName="contact" class="form-control" placeholder="Enter Contact"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['contact'].errors) || (!f['contact'].pristine && f['contact'].invalid) }">
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['contact'].errors) || (!f['contact'].pristine && f['contact'].invalid)">
+                        <div *ngIf="f['contact'].errors?.['required']">Contact cannot be blank</div>
+                        <div *ngIf="f['contact'].errors?.['pattern']">Incorrect Contact format</div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Ethnicity</label>
+                    <div class="col-sm-8">
+        
+                      <input type="text" formControlName="ethnicity" class="form-control" placeholder="Enter Ethnicity"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['ethnicity'].errors) || (!f['ethnicity'].pristine && f['ethnicity'].invalid) }">
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['ethnicity'].errors) || (!f['ethnicity'].pristine && f['ethnicity'].invalid)">
+                        <div *ngIf="f['ethnicity'].errors?.['required']">Ethnicity is required</div>
+                      </div>
+                    </div>
+                  </div>
+        
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Language*</label>
+                    <div class="col-sm-8">
+        
+                      <select formControlName="language" class="form-controls"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['language'].errors) || (!f['language'].pristine && f['language'].invalid) }">
+                        <option value="" disabled selected>Choose Language</option>
+                        <option value="English">English</option>
+                        <option value="Tamil">Tamil</option>
+                        <option value="Hindhi">Hindhi</option>
+                        <option value="Marathi">Marathi</option>
+        
+                      </select>
+                      <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['language'].errors) || (!f['language'].pristine && f['language'].invalid)">
+                        <div *ngIf="f['language'].errors?.['required']">language is required</div>
+                      </div>
+                    </div>
+                  </div>
+        
+        
+        
+                  <div class="form-group text-center">
+                    <button type="submit" [disabled]="!patientDetailsForm.valid" class="btn btn-success btn-sm">Save</button>
+                  </div>
+                </div>
+        
+              </form>
+            </div>
+          </div>
+        
+        
+        </div>      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+Emergency Details      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <app-patient-emergency-details [addressparent]="addresscarrier"></app-patient-emergency-details>      </div>
+    </div>
+  </div>
+
+</div>
+
+

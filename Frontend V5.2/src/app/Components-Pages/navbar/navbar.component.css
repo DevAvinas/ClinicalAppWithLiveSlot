@@ -1,0 +1,16 @@
+.navbar{
+  box-shadow: 0 2px 4px -1px rgba(0,0,0,0.25);
+}
+
+.dropdown-menu{
+  right: 4px;
+  left: auto;
+}
+
+@media (max-width: 653px) {
+  .dropdown-menu{
+    left: 4px;
+    right: auto;
+    margin-top: 50px;
+  }
+}

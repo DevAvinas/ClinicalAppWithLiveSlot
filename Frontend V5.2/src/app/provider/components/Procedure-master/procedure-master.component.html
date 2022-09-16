@@ -1,0 +1,246 @@
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+<div class="container ">
+    <div class="card">
+        <div class="card-header">
+            Procedure Details
+        </div>
+        <div class="card-body">
+            <form [formGroup]="procedureDetailsForm"  (ngSubmit)="saveProcedureDetails()">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Procedure Code*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="procedureCode" formControlName="procedureCode" class="form-control"
+                                placeholder="Enter procedure code" (blur)="fetchLocation()"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['procedureCode'].errors) || (!f['procedureCode'].pristine && f['procedureCode'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['procedureCode'].errors) || (!f['procedureCode'].pristine && f['procedureCode'].invalid)">
+                                <div *ngIf="f['procedureCode'].errors?.['required']">procedure code cannot be empty
+                                </div>
+                            
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Procedure Description*</label>
+                        <div class="col-sm-8">
+                            <input type="text"  name="description" formControlName="description" class="form-control"
+                                placeholder="Enter procedure description" (blur)="fetchByDignosis()" id = "desc" 
+                                [ngClass]="{ 'is-invalid': (submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid)">
+                                <div *ngIf="f['description'].errors?.['required']">Description cannot be empty
+                                </div>
+            
+                            </div>
+                        </div>
+                 
+                    </div> -->
+                    <!-- <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Procedure Description*</label>
+                        <div class="col-sm-8">
+                            <input type="text" [class.is-success]="!procedureDetailsForm.get('location')?.errors"
+                                class="form-control" placeholder="Enter diagnosis code" (blur)="fetchByDignosis()" id = "desc1" 
+                                formControlName="description" id = "desc" 
+                                [ngClass]="{ 'is-invalid': (submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid)">
+                                <div *ngIf="f['description'].errors?.['required']">Diagnosis Description cannot be empty
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="form-group row">
+                        <div *ngIf="procedureDetailsForm.get('description')?.value.toLowerCase() == 'other'">
+                            <label class=" col-sm-4 col-form-label">Custom Description*</label>
+                            <div>
+                                <div class="col-sm-8">
+                                    <input  class="form-control"
+                                        [class.is-success]="!procedureDetailsForm.get('customDescription')?.errors"
+                                        type="text" placeholder="Custome description"
+                                        formControlName="customDescription" [ngClass]="{ 'is-invalid': (submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid) }">
+                                        <div class="invalid-feedback"
+                                        *ngIf="(submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid)">
+                                        <div *ngIf="f['description'].errors?.['required']">Diagnosis Description cannot be empty
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Procedure Description*</label>
+                        <div class="col-sm-8">
+                            <div class="ng-autocomplete">                                
+                   <ng-autocomplete  id="demo" [data]="posts"  [searchKeyword]="keyword" [itemTemplate]="itemTemplate"  placeholder="Enter Drugname"  
+                  [class.is-success]="!procedureDetailsForm.get('procedureDescription')?.errors"
+                  placeholder="Enter diagnosis code" (selected)='selectEvent($event)' 
+                   formControlName="procedureDescription"
+                   [ngClass]="{ 'is-invalid': (submitted  && f['procedureDescription'].errors) || (!f['procedureDescription'].pristine && f['procedureDescription'].invalid) }"
+                   >  
+                    
+                </ng-autocomplete>      
+                                
+                            <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.procedureDescription"></a>
+                            </ng-template>
+
+                            </div>
+
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['procedureDescription'].errors) || (!f['procedureDescription'].pristine && f['procedureDescription'].invalid)">
+                                <div *ngIf="f['procedureDescription'].errors?.['required']">Procedure Description cannot be empty
+                                </div>
+                                
+                                <div *ngIf="f['procedureDescription'].errors?.['minlength']">Minimum 2 characters required</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group row">
+                        <div *ngIf="procedureDetailsForm.get('description')?.value == 'other'">
+                            <label class=" col-sm-4 col-form-label">Custom Description*</label>
+                            <div>
+                                <div class="col-sm-8">
+                                    <input  class="form-control"
+                                        [class.is-success]="!procedureDetailsForm.get('customDescription')?.errors"
+                                        type="text" placeholder="Custome description"
+                                        formControlName="customDescription" [ngClass]="{ 'is-invalid': (submitted  && f['procedureDescription'].errors) || (!f['procedureDescription'].pristine && f['procedureDescription'].invalid) }">
+                                        <div class="invalid-feedback"
+                                        *ngIf="(submitted  && f['procedureDescription'].errors) || (!f['procedureDescription'].pristine && f['procedureDescription'].invalid)">
+                                        <div *ngIf="f['description'].errors?.['required']">Diagnosis Description cannot be empty
+                                        </div>
+        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Procedure_Is_Depricated?*</label>
+                        <div class="col-sm-8">
+
+                            <label class="radio-inline"><input type="radio" formControlName="procedureIsDepricated"
+                                    class="form-controls" checked="checked" name="procedureIsDepricated" id="procedureIsDepricated"
+                                    value="true" style="margin-bottom: 10px">Yes</label>
+
+                            <label class="radio-inline"> <input type="radio" formControlName="procedureIsDepricated"
+                                    class="form-controls" name="procedureIsDepricated" id="procedureIsDepricated" value="false"
+                                    style="margin-bottom: 10px">No </label>
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['procedureIsDepricated'].errors) || (!f['procedureIsDepricated'].pristine && f['procedureIsDepricated'].invalid)">
+                                <div *ngIf="f['procedureIsDepricated'].errors?.['required']">access_flag cannot be blank</div>
+                                <div *ngIf="f['procedureIsDepricated'].errors?.['procedureIsDepricated']">Incorrect access_flag format</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success btn-sm">Save</button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+    <br>
+    <br>
+    <!-- <table class="center" border="1" cellspacing="0" cellpadding="10px">
+        <thead>
+           
+            <th>
+                Procedure Code
+            </th>
+            <th>
+                Procedure Description
+            </th>
+            <th>
+                Procedure_Is_Depricated
+            </th>
+            <!-- <th>
+                Custom Procedure
+             </th> -->
+        <!-- </thead>
+        <tbody>
+            <ng-container *ngFor='let item of posts';>
+            
+            <tr>
+                    <td>
+                        {{item.id}}
+                    </td>
+                   
+                    <td>
+                        {{item.Procedure_Description}}
+                    </td>
+                    <td>
+                        {{item.Procedure_Is_Depricated}}
+                    </td>
+                    <!-- <td>
+                        {{item.customDescription}}
+                    </td> -->
+                      
+                              
+                <!-- </tr>
+            </ng-container>
+            <tr *ngIf="!posts || posts.length==0">
+                <td colspan="7">
+                    No Procedure to display
+                </td>
+            </tr>
+    
+        </tbody>
+    </table>  --> 
+    <!-- <div class="example-header">
+        <mat-form-field>
+            <input matInput  placeholder="Filter">
+        </mat-form-field>
+      </div>
+      
+      <div class="example-container mat-elevation-z8">
+      
+        <mat-table [dataSource]="dataSource" >
+      
+        
+          <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Procedure code </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+          </ng-container>
+      
+        
+          <ng-container matColumnDef="Procedure_Description">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Procedure_Description  </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.Procedure_Description}} </mat-cell>
+          </ng-container>
+          <br>
+
+          <ng-container matColumnDef="Procedure_Is_Depricated">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Procedure_Is_Depricated  </mat-header-cell>
+            <mat-cell *matCellDef="let row"> {{row.Procedure_Is_Depricated}} </mat-cell>
+          </ng-container>
+    
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;">
+          </mat-row>
+        </mat-table>
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+       
+      <!-- </div> -->
+      
+      
+    

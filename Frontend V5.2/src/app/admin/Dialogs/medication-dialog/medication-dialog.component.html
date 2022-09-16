@@ -1,0 +1,117 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+<div class="container ">
+    <div class="card">
+        <div class="card-header">
+            Medication Details
+        </div>
+        <div class="card-body">
+            <form [formGroup]="medicationDetailsForm" (ngSubmit)="saveMedicationDetails()">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug Id*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="drug_id" formControlName="drug_id" class="form-control"
+                                placeholder="Enter Drug Id" 
+                                [ngClass]="{ 'is-invalid': (submitted  && f['drug_id'].errors) || (!f['drug_id'].pristine && f['drug_id'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['drug_id'].errors) || (!f['drug_id'].pristine && f['drug_id'].invalid)">
+                                <div *ngIf="f['drug_id'].errors?.['required']">Drug Id cannot be empty
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug Name*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="drug_name" formControlName="drug_name" class="form-control"
+                                placeholder="Enter Drug Name"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['drug_name'].errors) || (!f['drug_name'].pristine && f['drug_name'].invalid) }">
+
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['drug_name'].errors) || (!f['drug_name'].pristine && f['drug_name'].invalid)">
+                                <div *ngIf="f['drug_name'].errors?.['required']">Drug Name cannot be empty
+                                </div>
+
+                                <div *ngIf="f['drug_name'].errors?.['minlength']">Minimum 2 characters required
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug Brand Name*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="drug_brand_name" formControlName="drug_brand_name" class="form-control"
+                                placeholder="Enter Drug Brand Name"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['drug_brand_name'].errors) || (!f['drug_brand_name'].pristine && f['drug_brand_name'].invalid) }">
+
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['drug_brand_name'].errors) || (!f['drug_brand_name'].pristine && f['drug_brand_name'].invalid)">
+                                <div *ngIf="f['drug_brand_name'].errors?.['required']">Drug Brand Name cannot be empty
+                                </div>
+
+                                <div *ngIf="f['drug_brand_name'].errors?.['minlength']">Minimum 2 characters required
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug Generic Name*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="drug_generic_name" formControlName="drug_generic_name" class="form-control"
+                                placeholder="Enter Drug Generic Name"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['drug_generic_name'].errors) || (!f['drug_generic_name'].pristine && f['drug_generic_name'].invalid) }">
+
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['drug_generic_name'].errors) || (!f['drug_generic_name'].pristine && f['drug_generic_name'].invalid)">
+                                <div *ngIf="f['drug_generic_name'].errors?.['required']">Drug Generic Name cannot be empty
+                                </div>
+
+                                <div *ngIf="f['drug_generic_name'].errors?.['minlength']">Minimum 2 characters required
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug form*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="drug_form" formControlName="drug_form" class="form-control"
+                                placeholder="Enter Drug Form"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['drug_form'].errors) || (!f['drug_form'].pristine && f['drug_form'].invalid) }">
+
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['drug_form'].errors) || (!f['drug_form'].pristine && f['drug_form'].invalid)">
+                                <div *ngIf="f['drug_form'].errors?.['required']">Drug Form cannot be empty
+                                </div>
+
+                                <div *ngIf="f['drug_form'].errors?.['minlength']">Minimum 2 characters required
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success btn-sm">{{action}}</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>

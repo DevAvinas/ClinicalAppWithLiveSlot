@@ -1,0 +1,178 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+<div class="container ">
+    <div class="card">
+       
+           
+        <div class="card-header">
+            Patient Medication  Details
+        </div>
+        <div class="card-body">
+            <form [formGroup]="MedicationDetailsForm" (ngSubmit)="medicationDetail()">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug_ID *</label>
+                        <div class="col-sm-8" >
+                            <input style="width:82%" type="text" name="DrugiD" formControlName="DrugiD" class="form-control"
+                                placeholder="Enter Drug Id" (blur)="fetchByDrugId()"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['DrugiD'].errors) || (!f['DrugiD'].pristine && f['DrugiD'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['DrugiD'].errors) || (!f['DrugiD'].pristine && f['DrugiD'].invalid)">
+                                <div *ngIf="f['DrugiD'].errors?.['required']">DrugID cannot be empty</div>
+                                <div *ngIf="f['DrugiD'].errors?.['minlength']">Minimum 2 characters required</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug_Name  *</label>
+                        <div class="col-sm-8">
+                      <div class="ng-autocomplete">
+                               
+                                                        
+                   <ng-autocomplete #Drug_Name [data]="posts"  [searchKeyword]="keyword" [itemTemplate]="itemTemplate"  placeholder="Enter Drugname"  
+                   formControlName="Drugname"  (selected)='selectEvent($event)' [minQueryLength]="3" 
+                   [ngClass]="{ 'is-invalid': (submitted  && f['Drugname'].errors) || (!f['Drugname'].pristine && f['Drugname'].invalid) }"
+                   
+                   >  
+                                    
+                </ng-autocomplete>      
+                                
+                            <ng-template #itemTemplate let-item>
+                                <a [innerHTML]="item.drug_name"></a>
+                            </ng-template>
+
+                            </div>
+
+                        
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug_Generic_Name *</label>
+                        <div class="col-sm-8">
+                            <input style="width:82%" type="text" name="Druggenericname" formControlName="Druggenericname" class="form-control"
+                                placeholder="Enter Druggenericname "
+                                [ngClass]="{ 'is-invalid': (submitted  && f['Druggenericname'].errors) || (!f['Druggenericname'].pristine && f['Druggenericname'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['Druggenericname'].errors) || (!f['Druggenericname'].pristine && f['Druggenericname'].invalid)">
+                                <div *ngIf="f['Druggenericname'].errors?.['required']">Drug_Generic_Name cannot be empty
+                                </div>
+                                
+                                <div *ngIf="f['Druggenericname'].errors?.['minlength']">Minimum 2 characters required</div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Drug_Brand_Name *</label>
+                        <div class="col-sm-8">
+                            
+
+                            <div style="width:82%">
+                                <ng-multiselect-dropdown
+                               
+                                
+                                placeholder="Enter Drug BrandName"
+                                    [data]="dropdownList"
+                                    [settings]="dropdownSettings"
+                                    formControlName="DrugBrandName"
+                                    >
+                                </ng-multiselect-dropdown>
+                            </div>
+                       
+                    </div>
+                      </div>
+
+
+                        <div class="form-group row">
+                            <label class=" col-sm-4 col-form-label">
+                               Drug_Form *</label>
+                            <div class="col-sm-8">
+                                <input style="width:82%" type="text" name="DrugForm" formControlName="DrugForm" class="form-control"
+                                    placeholder="Enter DrugForm" 
+                                    [ngClass]="{ 'is-invalid': (submitted  && f['DrugForm'].errors) || (!f['DrugForm'].pristine && f['DrugForm'].invalid) }">
+                                <div class="invalid-feedback"
+                                    *ngIf="(submitted  && f['DrugForm'].errors) || (!f['DrugForm'].pristine && f['DrugForm'].invalid)">
+                                    <div *ngIf="f['DrugForm'].errors?.['required']">Drug_Form cannot be empty
+                                    </div>
+                                   
+                                    <div *ngIf="f['DrugForm'].errors?.['minlength']">Minimum 6 characters required</div>
+                                </div>
+                            </div>
+                            </div>
+
+                    <div class="form-group text-center">
+                        <button type="submit"  class="btn btn-success btn-sm">Save</button>
+                    </div>
+                
+                
+
+                </div>
+            
+            </form>
+              </div>
+          
+           
+              </div>
+          
+            
+
+            </div>
+<br>
+<br>
+<br>
+             <!-- <table class="center" border="1" cellpadding="10px" cellspacing="0px">
+                <thead>
+                    <th>
+                        Drug_ID
+                    </th>
+                    <th>
+                        Drug_Name
+                    </th>
+                    <th>
+                        Drug_Generic_Name
+                    </th>
+                    <th>
+                        Drug_Brand_Name
+                    </th>
+                    <th>
+                        Drug_Form
+                    </th>
+                </thead>
+                <tbody> 
+                     <tr *ngFor='let employee of posts'>
+                        <td>
+                            {{employee.id}}
+                        </td>
+                        <td>
+                            {{employee.Drug_Name}}
+                        </td>
+                        <td>
+                            {{employee.Drug_Generic_Name}}
+                        </td>
+                        <td>
+                            {{employee.Drug_Brand_Name}}
+                        </td>
+                        <td>
+                            {{employee.Drug_Generic_Name}}
+                        </td>                     
+                    </tr>
+                    <tr *ngIf="!patients || patients.length==0">
+                        <td colspan="5">
+                            No medicationdetails to display
+                        </td>
+                    </tr>
+                </tbody> 
+           </table> 
+             -->

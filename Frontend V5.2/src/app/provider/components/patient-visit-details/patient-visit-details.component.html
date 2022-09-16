@@ -1,0 +1,270 @@
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+<div class="container ">
+    <!-- <div class="row justify-content-center"> -->
+    
+          <div class="card">
+            <div class="card-header">
+                Patient Visit Details
+              </div>
+              <div class="card-body">
+                <form [formGroup]="form" (ngSubmit)="patientVisitDetail()">
+    
+                    <!-- Name control -->
+                    <div class="form-group">
+                    <div class="row">
+                        <label class=" col-sm-4 col-form-label">
+                          *Patient Name</label>
+                        <div class="col-sm-8">
+                
+                            <input type="text" formControlName="first_name" class="form-control" placeholder="Enter full name"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['first_name'].errors) || (!f['first_name'].pristine && f['first_name'].invalid) }"
+                            [attr.disabled]="true" >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['first_name'].errors) || (!f['first_name'].pristine && f['first_name'].invalid)">
+                            <div *ngIf="f['first_name'].errors?.['required']">Name is required</div>
+                            <div *ngIf="f['first_name'].errors?.['minlength']">Minimum 3 characters required</div>
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+
+                   <!-- Name control -->
+                   <div class="form-group">
+                    <div class="row">
+                        <label class=" col-sm-4 col-form-label">
+                          * TakenBy</label>
+                        <div class="col-sm-8">
+                
+                            <input type="text" formControlName="physician" class="form-control" placeholder="Enter full name"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['physician'].errors) || (!f['physician'].pristine && f['physician'].invalid) }"
+                            [attr.disabled]="true" >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['physician'].errors) || (!f['physician'].pristine && f['physician'].invalid)">
+                            <div *ngIf="f['physician'].errors?.['required']">Name is required</div>
+                            <div *ngIf="f['physician'].errors?.['minlength']">Minimum 3 characters required</div>
+                        </div>
+                        </div>
+                    </div>
+                  </div> 
+                    <!-- Email control -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">*Height(in cm)</label>
+                        <div class="col-sm-8">
+                
+                            <input type="text" formControlName="height" class="form-control" placeholder="Enter Height in cm"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['height'].errors) || (!f['height'].pristine && f['height'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['height'].errors) || (!f['height'].pristine && f['height'].invalid)">
+                            <div *ngIf="f['height'].errors?.['required']">Height is required</div>
+                            <div *ngIf="f['height'].errors?.['maxlength']">maximum 3 characters required</div>
+                            <div *ngIf="f['height'].errors?.['max']">Please enter value below 250</div>
+                        </div>
+                        </div>
+                    </div>
+                
+                    <!-- Address control -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">*weight(in kg)</label>
+                        <div class="col-sm-8">
+                            <input type="text" formControlName="weight" class="form-control" placeholder="Enter weight in kg"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['weight'].errors) || (!f['weight'].pristine && f['weight'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['weight'].errors) || (!f['weight'].pristine && f['weight'].invalid)">
+                            <div *ngIf="f['weight'].errors?.['required']">weight is required</div>
+                            
+                            <div *ngIf="f['weight'].errors?.['pattern']">Please enter value till 2 decimal digits only</div>
+                        </div>
+                        </div>
+                    </div>
+                
+                    <!-- Password control -->
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">*Blood Pressure(in mm Hg)</label>
+                        <div class="col-sm-8">
+                
+                            <input type="text" formControlName="bloodpressure" class="form-control" placeholder="Enter Blood Pressure in mm Hg"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['bloodpressure'].errors) || (!f['bloodpressure'].pristine && f['bloodpressure'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['bloodpressure'].errors) || (!f['bloodpressure'].pristine && f['bloodpressure'].invalid)">
+                            <div *ngIf="f['bloodpressure'].errors?.['required']">Blood Pressure is required</div>
+                            
+                            <div *ngIf="f['bloodpressure'].errors?.['max']">Please enter value below 250</div>
+                        </div>
+                        </div>
+                    </div>
+                
+    
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">*Body Temperature(in Fahrenheit)</label>
+                        <div class="col-sm-8">
+                
+                            <input type="text" formControlName="bodytemperature" class="form-control" placeholder="Enter Body Temperature in Fahrenheit"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['bodytemperature'].errors) || (!f['bodytemperature'].pristine && f['bodytemperature'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['bodytemperature'].errors) || (!f['bodytemperature'].pristine && f['bodytemperature'].invalid)">
+                            <div *ngIf="f['bodytemperature'].errors?.['required']">Blood Pressure is required</div>
+                            
+                            <div *ngIf="f['bodytemperature'].errors?.['max']">Please enter value below 250</div>
+                        </div>
+                        </div>
+                    </div>
+    
+                    <div class="form-group row">
+                        <label class="col-sm-4 col-form-label">*Respiration Rate(in BPM)</label>
+                        <div class="col-sm-8">
+                
+                            <input type="text" formControlName="respirationrate" class="form-control" placeholder="Enter the respiration rate in BPM"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['respirationrate'].errors) || (!f['respirationrate'].pristine && f['respirationrate'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['respirationrate'].errors) || (!f['respirationrate'].pristine && f['respirationrate'].invalid)">
+                            <div *ngIf="f['respirationrate'].errors?.['required']">Respirationrate is required</div>
+                            
+                            <div *ngIf="f['respirationrate'].errors?.['max']">Please enter value below 250</div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <button type="submit" class="btn btn-success btn-sm">Submit</button>
+                    </div>
+                
+                </form>
+                  </div>
+                  </div>
+              
+                  <!-- </div> -->
+    
+                </div>
+<br>
+<br>
+<br>
+               <!-- <table class="center" border="1" cellspacing="0" cellpadding="10px">
+                    <thead>
+                        <th>
+                            PatientName
+                        </th>
+                        <th>
+                            physicianName
+                        </th>
+                        <th>
+                            Height
+                        </th>
+                        <th>
+                            Weight
+                        </th>
+                        <th>
+                            BloodPressure
+                        </th>
+                        <th>
+                            BodyTemperature
+                        </th>
+                        <th>
+                           Respirationrate
+                        </th>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor='let patient of patients';>
+                        
+                        <tr>
+                                <td>
+                                    {{patient.first_name}}
+                                </td>
+                                <td>
+                                    {{patient.physician}}
+                                </td>
+                                <td>
+                                    {{patient.height}}
+                                </td>
+                                <td>
+                                    {{patient.weight}}
+                                </td>
+                                <td>
+                                    {{patient.bloodpressure}}
+                                </td>  
+                                <td>
+                                    {{patient.bodytemperature}}
+                                </td>        
+                                <td>
+                                    {{patient.respirationrate}}
+                                </td>      
+                                          
+                            </tr>
+                        </ng-container>
+                        <tr *ngIf="!patients || patients.length==0">
+                            <td colspan="7">
+                                No patients to display
+                            </td>
+                        </tr>
+                
+                    </tbody>
+                </table>  -->
+
+                <!-- <div class="containter">
+                    <div style="margin-top:10px">
+                      
+                      <mat-form-field appearance="standard">
+                        <mat-label>Filter</mat-label>
+                        <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
+                      </mat-form-field>
+                      
+                      <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource" matSort>
+                      
+                          
+                          <ng-container matColumnDef="id">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Id </th>
+                            <td mat-cell *matCellDef="let row"> {{row.first_name}} </td>
+                          </ng-container>
+                      
+                          
+                          <ng-container matColumnDef="firstname">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header>Patient Name </th>
+                            <td mat-cell *matCellDef="let row"> {{row.physician}} </td>
+                          </ng-container>
+                      
+                          
+                          <ng-container matColumnDef="dor">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </th>
+                            <td mat-cell *matCellDef="let row"> {{row.height}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="dor">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </th>
+                            <td mat-cell *matCellDef="let row"> {{row.weight}} </td>
+                          </ng-container>
+                          
+                          <ng-container matColumnDef="dor">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </th>
+                            <td mat-cell *matCellDef="let row"> {{row.bloodpressure}} </td>
+                          </ng-container>
+
+                          <ng-container matColumnDef="dor">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </th>
+                            <td mat-cell *matCellDef="let row"> {{row.bodytemperature}} </td>
+                          </ng-container>
+                          <ng-container matColumnDef="dor">
+                            <th mat-header-cell *matHeaderCellDef mat-sort-header> Registration Date </th>
+                            <td mat-cell *matCellDef="let row"> {{row.respirationrate}} </td>
+                          </ng-container>
+                          
+                      
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                      
+                          
+                          <tr class="mat-row" *matNoDataRow>
+                            <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+                          </tr>
+                        </table>
+                      
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+                      </div>
+                      
+                  
+                    </div>
+                  </div>  -->

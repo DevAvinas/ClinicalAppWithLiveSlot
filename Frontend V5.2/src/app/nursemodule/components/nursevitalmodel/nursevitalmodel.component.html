@@ -1,0 +1,255 @@
+
+<div mat-align-tabs="center">
+    <tabset #tabset >
+        <tab 
+        heading="Demographic Details"
+        >
+              <app-vital-editpatient-demo-details [meetingID]="meetingIDVital"></app-vital-editpatient-demo-details>
+      </tab>
+    
+      <tab
+        heading="Vitals"
+        >
+  <br>
+        <div mat-dialog-action [align]="'center'">
+  
+          <button mat-raised-button  (click)="addvitals()" style="color:rgb(238, 238, 247); background-color: rgb(25, 160, 160); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); margin-left: auto;margin-right: auto;">Add Vital Details</button>
+  
+        </div>
+        <br>
+        <br>
+        <div class="table-responsive">
+        <table class="center" border="1" cellspacing="0" cellpadding="10px">
+            
+          <thead>
+              <th>
+                  PatientName
+              </th>
+              <th>
+                  TakenBy
+              </th>
+              <th>
+                  Height
+              </th>
+              <th>
+                  Weight
+              </th>
+              <th>
+                  BloodPressure
+              </th>
+              <th>
+                  BodyTemperature
+              </th>
+              <th>
+                 Respirationrate
+              </th>
+          </thead>
+          <tbody>
+              <ng-container *ngFor='let patient of appointmentdetail';>
+              
+              <tr>
+                      <td>
+                          {{patient.first_name}}
+                      </td>
+                      <td>
+                          {{patient.physician}}
+                      </td>
+                      <td>
+                          {{patient.height}}
+                      </td>
+                      <td>
+                          {{patient.weight}}
+                      </td>
+                      <td>
+                          {{patient.bloodpressure}}
+                      </td>  
+                      <td>
+                          {{patient.bodytemperature}}
+                      </td>        
+                      <td>
+                          {{patient.respirationrate}}
+                      </td>      
+                                
+                  </tr>
+  
+              </ng-container>
+              <tr *ngIf="!appointmentdetail || appointmentdetail.length==0">
+                  <td colspan="7">
+                      No patients to display
+                  </td>
+              </tr>
+      
+          </tbody>
+      </table> 
+      </div>
+    </tab>
+   
+          <!-- <tab
+        heading="Diagnosis">
+        <br>
+        <div mat-dialog-action [align]="'center'">
+  
+          <button class="center" mat-raised-button color="accent" (click)="addDiagnosis()" style="color:rgb(238, 238, 247); background-color: rgb(25, 160, 160); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); margin-left: auto;margin-right: auto;">Add Diagnosis </button>
+         
+        </div>
+      
+        <br>
+        <br>
+  
+      <table class="center" border="1" cellspacing="0" cellpadding="10px">
+          
+        <thead>
+            <th>
+                Diagnosis Code
+            </th>
+            <th>
+              Diagnosis Description
+            </th>
+            <th>
+              Diagnosis_Is_Depricated
+            </th>
+        </thead>
+        <tbody>
+            <ng-container *ngFor='let dic of posts';>
+            
+            <tr>
+                    <td>
+                        {{dic.diagnosisCode}}
+                    </td>
+                    <td>
+                        {{dic.diagnosisDescription}}
+                    </td>
+                    <td>
+                        {{dic.diagnosisIsDepricated}}
+                    </td>
+                        
+                              
+                </tr>
+  
+            </ng-container>
+            <tr *ngIf="!diagnolist || diagnolist.length==0">
+                <td colspan="7">
+                    No Diagnosis to display
+                </td>
+            </tr>
+    
+        </tbody>
+    </table> 
+      </tab>
+    
+          <tab
+        heading="Procedure">
+        <br>
+        <div mat-dialog-action [align]="'center'">
+           
+  
+          <button class="center" mat-raised-button color="accent" (click)="addProcedure()" style="color:rgb(238, 238, 247); background-color: rgb(25, 160, 160); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); margin-left: auto;margin-right: auto;">Add Procedure </button>
+  
+        </div>
+        <br>
+        <br>
+        <table class="center" border="1" cellspacing="0" cellpadding="10px">
+          
+          <thead>
+              <th>
+                  Procedure Code
+              </th>
+              <th>
+                  Procedure Description
+              </th>
+              <th>
+                   Procedure_Is_Depricated
+              </th>
+          </thead>
+          <tbody>
+              <ng-container *ngFor='let proc of posts1';>
+              
+              <tr>
+                      <td>
+                          {{proc.procedureCode}}
+                      </td>
+                      <td>
+                          {{proc.procedureDescription}}
+                      </td>
+                      <td>
+                          {{proc.procedureIsDepricated}}
+                      </td>
+                          
+                                
+                  </tr>
+  
+              </ng-container>
+              <tr *ngIf="!posts1 || posts1.length==0">
+                  <td colspan="7">
+                      No procedure to display
+                  </td>
+              </tr>
+      
+          </tbody>
+      </table> 
+      </tab>
+  
+        <tab
+        heading="Medication"
+        ><br>
+        <div mat-dialog-action [align]="'center'">
+  
+          <button mat-raised-button  (click)="addMedication()" style="color:rgb(238, 238, 247); background-color: rgb(25, 160, 160); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); margin-left: auto;margin-right: auto;">Add Medication</button>
+  
+        </div>
+        <br>
+        <br>
+         <table class="center" border="1" cellpadding="10px" cellspacing="0px">
+          <thead>
+              <th>
+                  Drug_ID
+              </th>
+              <th>
+                  Drug_Name
+              </th>
+              <th>
+                  Drug_Generic_Name
+              </th>
+              <th>
+                  Drug_Brand_Name
+              </th>
+              <th>
+                  Drug_Form
+              </th>
+          </thead>
+          <tbody> 
+               <tr *ngFor='let employee of medicationoutdetail'>
+                  <td>
+                      {{employee.drug_id}}
+                  </td>
+                  <td>
+                      {{employee.drug_name}}
+                  </td>
+                  <td>
+                      {{employee.drug_generic_name}}
+                  </td>
+                  <td>
+                      {{employee.drug_brand_name}}
+                  </td>
+                  <td>
+                      {{employee.drug_generic_name}}
+                  </td>                     
+              </tr>
+              <tr *ngIf="!medicationoutdetail || medicationoutdetail.length==0">
+                  <td colspan="5">
+                      No medicationdetails to display
+                  </td>
+              </tr>
+          </tbody> 
+     </table> 
+     <br>
+     <br>
+     <div mat-dialog-action [align]="'center'">
+  
+      <button mat-raised-button   style="color:rgb(238, 238, 247); background-color: rgb(25, 160, 54); box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19); margin-left: auto;margin-right: auto;">Done</button>
+  
+    </div>
+      </tab> -->
+    </tabset>
+  </div>
+    

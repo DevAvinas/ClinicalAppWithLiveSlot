@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Invoice Template Design</title>
+	<!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+</head>
+<body>
+	<div class="container">
+		<button class="btn-lg" style="margin-left: 40%;background-color: #25beaa;color: white;" (click)="convertToPDF()">&emsp;Download&emsp;</button>
+		</div>
+<div id="pdfTable"class="wrapper">
+	<div class="invoice_wrapper">
+		<div class="header">
+			<div class="logo_invoice_wrap">
+        <h1 style="margin-top: 10px; color: #25beaa;"class="profile"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-heart-pulse" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053.918 3.995.78 5.323 1.508 7H.43c-2.128-5.697 4.165-8.83 7.394-5.857.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17c3.23-2.974 9.522.159 7.394 5.856h-1.078c.728-1.677.59-3.005.108-3.947C13.486.878 10.4.28 8.717 2.01L8 2.748ZM2.212 10h1.315C4.593 11.183 6.05 12.458 8 13.795c1.949-1.337 3.407-2.612 4.473-3.795h1.315c-1.265 1.566-3.14 3.25-5.788 5-2.648-1.75-4.523-3.434-5.788-5Zm8.252-6.686a.5.5 0 0 0-.945.049L7.921 8.956 6.464 5.314a.5.5 0 0 0-.88-.091L3.732 8H.5a.5.5 0 0 0 0 1H4a.5.5 0 0 0 .416-.223l1.473-2.209 1.647 4.118a.5.5 0 0 0 .945-.049l1.598-5.593 1.457 3.642A.5.5 0 0 0 12 9h3.5a.5.5 0 0 0 0-1h-3.162l-1.874-4.686Z"/>
+          </svg></h1>
+
+				<div class="logo_sec">
+					<div class="title_wrap">
+						<p style="color: #25beaa;"class="title bold">CT General Hospital</p>
+						<p style="color: #088070;text-align: center;" class="sub_title">NewYork, USA</p>
+					</div>
+				</div>
+				<div class="invoice_sec">
+					<p style="color: #25beaa;font-size: 18px;" class="invoice bold">Report</p>
+					<!-- <p class="invoice_no">
+						<span class="bold">Invoice</span>
+						<span>#3488</span>
+					</p> -->
+					<p class="date">
+						<!-- <p class="bold">Date</p>
+						<span style="color: #088070;font-weight: bold;">08/Jan/2022</span> -->
+					</p>
+				</div>
+			</div>
+      <hr>
+      <table class="table table-borderless" style="width: 100%;"id="contentToConvert">
+        <tr>
+          <th>Patient Id</th>
+          <td>{{user.patient_id}}</td>
+          <th>Name:</th>
+          <td>{{user.firstname}} {{user.lastname}}</td>
+
+        </tr>
+        <tr>
+          <th>DOB:</th>
+          <td>{{user.dob}}</td>
+          <th>Email</th>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <th>Gender:</th>
+          <td>{{patientDetails.gender}}</td>
+          <th>Contact</th>
+          <td>{{patientDetails.contact}}</td>
+        </tr>
+        <tr>
+          <th>Meeting Id:</th>
+          <td>{{newAppt.meetId}}</td>
+          <th>Meeting Discription</th>
+          <td>{{newAppt.description}}</td>
+        </tr>
+        <tr>
+          <th>Date:</th>
+          <td>{{newAppt.apptDt}}</td>
+          <th>Physician Name</th>
+          <td>{{newAppt.phyname}}</td>
+        </tr>
+      </table> 
+		</div>
+    <hr>
+<br>
+<p style="background:#89898d ;padding: 10px;color: #fff;" class="bold">
+  <span>Vital Details</span>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Height(cm)</th>
+      <th>weight(kg)</th>
+      <th>Blood Pressure(mm/Hg)</th>
+      <th>Body Temperature(Fahrenheit)</th>
+      <th>*Respiration Rate(BPM)</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let patientVitals of patientVitals">
+      <td>{{patientVitals.height}}</td>
+      <td>{{patientVitals.weight}}</td>
+      <td>{{patientVitals.bloodpressure}}</td>
+      <td>{{patientVitals.bodytemperature}}</td>
+      <td>{{patientVitals.respirationrate}}</td>
+      <!-- <td>174</td>
+      <td>70</td>
+      <td>80/120</td>
+      <td>99</td>
+      <td>12.6</td> -->
+    </tr>
+
+  </tbody>
+</table>
+<br>
+<p style="background: #89898d ;padding: 10px;color: #fff;" class="bold">
+  <span>Diagnosis</span>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Description</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of diagDescription">
+      <td>{{data.diagnosisCode}}</td>
+      <td>{{data.diagnosisDescription}}</td>
+      <!-- <td>123</td>
+      <td>isomania with mild depression</td> -->
+
+    </tr>
+
+  </tbody>
+</table>
+<br>
+<p style="background: #89898d;padding: 10px;color: #fff;" class="bold">
+  <span>Medication</span>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Drug Name</th>
+      <th>Suggested Brands</th>
+      <th>Medicine Form</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of medication">
+      <td>{{data.drug_name}}</td>
+      <td>{{data.drug_brand_name}}</td>
+      <td>{{data.drug_form}}</td>
+      <!-- <td>axotin</td>
+      <td>cetaphil,hgh</td>
+      <td>solution</td> -->
+
+    </tr>
+
+  </tbody>
+</table>
+<br>
+<p style="background:#89898d;padding: 10px;color: #fff;" class="bold">
+  <span>Procedure</span>
+</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Description</th>
+
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of procedure">
+      <td>{{data.procedureCode}}</td>
+      <td>{{data.procedureDescription}}</td>
+      <!-- <td>238</td>
+      <td>Cerebral dissection</td> -->
+
+    </tr>
+
+  </tbody>
+</table>
+<br>
+		<!-- <div class="body"> -->
+			<!-- <div class="main_table">
+				<div class="table_header">
+					<div class="row">
+						<div class="col col_no">NO.</div>
+						<div class="col col_des">ITEM DESCRIPTION</div>
+						<div class="col col_price">PRICE</div>
+						<div class="col col_qty">QTY</div>
+						<div class="col col_total">TOTAL</div>
+					</div>
+				</div>
+				<div class="table_body">
+					<div class="row">
+						<div class="col col_no">
+							<p>01</p>
+						</div>
+						<div class="col col_des">
+							<p class="bold">Web Design</p>
+							<p>Lorem ipsum dolor sit.</p>
+						</div>
+						<div class="col col_price">
+							<p>$350</p>
+						</div>
+						<div class="col col_qty">
+							<p>2</p>
+						</div>
+						<div class="col col_total">
+							<p>$700.00</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col_no">
+							<p>02</p>
+						</div>
+						<div class="col col_des">
+							<p class="bold">Web Development</p>
+							<p>Lorem ipsum dolor sit.</p>
+						</div>
+						<div class="col col_price">
+							<p>$350</p>
+						</div>
+						<div class="col col_qty">
+							<p>2</p>
+						</div>
+						<div class="col col_total">
+							<p>$700.00</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col_no">
+							<p>03</p>
+						</div>
+						<div class="col col_des">
+							<p class="bold">GitHub</p>
+							<p>Lorem ipsum dolor sit.</p>
+						</div>
+						<div class="col col_price">
+							<p>$120</p>
+						</div>
+						<div class="col col_qty">
+							<p>1</p>
+						</div>
+						<div class="col col_total">
+							<p>$700.00</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col_no">
+							<p>04</p>
+						</div>
+						<div class="col col_des">
+							<p class="bold">Backend Design</p>
+							<p>Lorem ipsum dolor sit.</p>
+						</div>
+						<div class="col col_price">
+							<p>$350</p>
+						</div>
+						<div class="col col_qty">
+							<p>2</p>
+						</div>
+						<div class="col col_total">
+							<p>$700.00</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col col_no">
+							<p>05</p>
+						</div>
+						<div class="col col_des">
+							<p class="bold">Backend Development</p>
+							<p>Lorem ipsum dolor sit.</p>
+						</div>
+						<div class="col col_price">
+							<p>$150</p>
+						</div>
+						<div class="col col_qty">
+							<p>1</p>
+						</div>
+						<div class="col col_total">
+							<p>$700.00</p>
+						</div>
+					</div>
+				</div>
+			</div> -->
+			
+      <!-- <div class="paymethod_grandtotal_wrap">
+				<div class="paymethod_sec">
+					<p class="bold">Payment Method</p>
+					<p>Visa, master Card and We accept Cheque</p>
+				</div>
+				<div class="grandtotal_sec">
+			        <p class="bold">
+			            <span>SUB TOTAL</span>
+			            <span>$7500</span>
+			        </p>
+			        <p>
+			            <span>Tax Vat 18%</span>
+			            <span>$200</span>
+			        </p>
+			        <p>
+			            <span>Discount 10%</span>
+			            <span>-$700</span>
+			        </p>
+			       	<p class="bold">
+			            <span>Grand Total</span>
+			            <span>$7000.0</span>
+			        </p>
+				</div>
+			</div>
+		</div> -->
+    <br>
+    <br>
+    <hr>
+			<div style="	display: flex;
+      justify-content: space-between;
+      padding: 10px;" class="logo_invoice_wrap">
+				<div class="logo_sec">
+					<div class="title_wrap">
+						<p class="title bold">CT General Hospital</p>
+						<p class="sub_title">#113, Random Street, NewYork, USA</p>
+					</div>
+				</div>
+				<div class="invoice_sec">
+					<p class="invoice bold">+355 67 600 67 67</p>
+					<!-- <p class="invoice_no">
+						<span class="bold">Invoice</span>
+						<span>#3488</span>
+					</p> -->
+					<p class="date">
+						<!-- <p class="bold">Date</p> -->
+						<span>info@ctgeneralhospitals.com</span>
+					</p>
+				</div>
+			</div>
+
+	</div> 
+</div>
+
+<!-- <div class="container">
+	<button class="btn-lg" style="margin-left: 40%;background-color: #25beaa;color: white;" (click)="convertToPDF()">Export To PDF</button>
+	</div> -->
+</body>
+</html>

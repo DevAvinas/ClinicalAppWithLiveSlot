@@ -1,0 +1,56 @@
+{
+  "PatientMaster": [
+    {
+      "title": "Mr",
+      "firstname": "Raghu",
+      "lastname": "Ram",
+      "email": "raghu@gmail.com",
+      "dob": "2012-12-12",
+      "password": "12341234",
+      "id": 1
+    },
+    {
+      "title": "Mr",
+      "firstname": "Avinash",
+      "lastname": "Kumar",
+      "email": "avi@gmail.com",
+      "dob": "2012-09-11",
+      "password": "12341234",
+      "id": 2
+    }
+  ],
+  "PatientDetails": [
+    {
+      "dob": "1992-03-03",
+      "dialcode": "+91",
+      "contact": "English",
+      "ethnicity": "Indian",
+      "language": "English",
+      "address": {
+        "line1": "asd",
+        "line2": "asdf",
+        "postalcode": "636001",
+        "city": "Salem",
+        "state": "Tamil Nadu",
+        "country": "India"
+      },
+      "id": 1
+    },
+    {
+      "dob": "1996-06-11",
+      "dialcode": "+91",
+      "contact": "12341234",
+      "ethnicity": "India",
+      "language": "English",
+      "address": {
+        "line1": "H Block",
+        "line2": "Street",
+        "postalcode": "600028",
+        "city": "Chennai",
+        "state": "Tamil Nadu",
+        "country": "India"
+      },
+      "id": 2
+    }
+  ]
+}

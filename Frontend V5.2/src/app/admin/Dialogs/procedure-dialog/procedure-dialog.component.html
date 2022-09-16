@@ -1,0 +1,78 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+<div class="container ">
+    <div class="card">
+        <div class="card-header">
+            Procedure Details
+        </div>
+        <div class="card-body">
+            <form [formGroup]="procedureDetailsForm" (ngSubmit)="saveProcedureDetails()">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Procedure Code*</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="procedureCode" formControlName="procedureCode" class="form-control"
+                                placeholder="Enter Procedure code"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['procedureCode'].errors) || (!f['procedureCode'].pristine && f['procedureCode'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['procedureCode'].errors) || (!f['procedureCode'].pristine && f['procedureCode'].invalid)">
+                                <div *ngIf="f['procedureCode'].errors?.['required']">Procedure Code cannot be empty
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                        Procedure Description*</label>
+                    <div class="col-sm-8">
+                        <input type="text" name="procedureDescription" formControlName="procedureDescription"
+                            class="form-control" placeholder="Enter Procedure description"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['procedureDescription'].errors) || (!f['procedureDescription'].pristine && f['procedureDescription'].invalid) }">
+
+                        <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['procedureDescription'].errors) || (!f['procedureDescription'].pristine && f['procedureDescription'].invalid)">
+                            <div *ngIf="f['procedureDescription'].errors?.['required']">Procedure Description cannot be empty
+                            </div>
+
+                            <div *ngIf="f['procedureDescription'].errors?.['minlength']">Minimum 2 characters required
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                        Diagnosis_Is_Depricated?*</label>
+                    <div class="col-sm-8">
+
+                        <label class="radio-inline"><input type="radio" formControlName="procedureIsDepricated"
+                                class="form-controls" checked="checked" name="procedureIsDepricated"
+                                id="procedureIsDepricated" value="true" style="margin-bottom: 10px">Yes</label>
+
+                        <label class="radio-inline"> <input type="radio" formControlName="procedureIsDepricated"
+                                class="form-controls" name="procedureIsDepricated" id="procedureIsDepricated"
+                                value="false" style="margin-bottom: 10px">No </label>
+                        <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['procedureIsDepricated'].errors) || (!f['procedureIsDepricated'].pristine && f['procedureIsDepricated'].invalid)">
+                            <div *ngIf="f['procedureIsDepricated'].errors?.['required']">Deprecated cannot be blank
+                            </div>
+                            <div *ngIf="f['procedureIsDepricated'].errors?.['procedureIsDepricated']">Incorrect
+                                Deprecated format</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-success btn-sm">{{action}}</button>
+                </div>
+        </form>
+    </div>
+
+</div>

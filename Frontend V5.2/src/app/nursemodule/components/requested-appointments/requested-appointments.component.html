@@ -1,0 +1,92 @@
+<div *ngIf="alertflag1">
+  <br>
+  <br>
+  <br>
+  <br>
+<div   class="alert alert-info" role="alert">
+  Sorry ! No upcoming appointments found
+ </div>
+</div>
+<div *ngIf="!alertflag1" class="table-responsive">
+<br>
+<br>
+<div style="text-align: center; font-style: italic;font-weight: bold;">
+<span class="dot2"></span> Today's Appointments 
+<span class="dot1"></span> Upcoming Appointments
+</div>
+<br>
+<br>
+<div class="table-responsive">
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Meeting Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Physician Name</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Date of Appointment</th>
+        <th scope="col">Appointment type</th>
+        <th scope="col">start time</th>
+        <th scope="col">End time</th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        <!-- "Subject":item.Subject,
+        "description" :"string",
+        "physicianName":physicianName,
+        "dateofappointment":item.dateofappointment,
+        "Time_slot":item.startTime+'-'+item.endTime,
+        "History":"None","isToday":isToday -->
+      <tr *ngFor="let data of appointments">
+        <td>{{data.meetingTitle}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.phyname}}</td>
+        <td>{{data.patientname}}</td>
+        <td>{{data.apptDt}}</td>
+        <td>{{data.apptType}}</td>
+        <td>{{data.apptFrTime}}</td>
+        <td>{{data.apptToTime}}</td>
+        <td> <button (click)="acceptFunction(data.meetId,data.status='confirm')" class="button">Accept</button></td>
+
+<td><link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
+<div class="w3-container">
+  
+  <button onclick="document.getElementById('id01').style.display='block'" class="button3">decline</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id01').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Reason </h2>
+      </header>
+      <br>
+      <form [formGroup]="procedureDetailsForm">
+      <div class="w3-container">
+        <input type="text" id="fname" class="fdec" name="fname" formControlName="dec" placeholder="Enter the reason for decline" >
+      <br><br>  <button (click)="acceptFunction(data.meetId,data.status='decline')" class="button">Save</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+</td> 
+        <!-- <td>Diagnosis</td>
+        <td>Eye Consultation</td>
+        <td>Dr. Khan</td>
+        <td><span class="badge bg-success"> 2022-04-01</span>
+           </td>
+           <td><button (click)="acceptFunction(data.meetId,data.status='decline')" class="button3">Decline</button></td>
+        <td>10 A.M. - 11 A.M.</td>
+        <td>None</td> -->
+        <td> <button (click)="rescheduleFunction(data)" class="button2" >Reschedule</button></td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+</div>

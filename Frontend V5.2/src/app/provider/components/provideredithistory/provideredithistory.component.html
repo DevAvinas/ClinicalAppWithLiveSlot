@@ -1,0 +1,63 @@
+<table  class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Meeting Id</th>
+     
+        <th scope="col">Description</th>
+        <th scope="col">Physician Name</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Date of Appointment</th>
+       
+        <th scope="col">start time</th>
+        <th scope="col">End time</th>
+        <th scope="col">status</th>
+        <th scope="col">changedby</th>
+        <th scope="col">ModifiedTime</th>
+        
+       
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        <!-- "Subject":item.Subject,
+        "description" :"string",
+        "physicianName":physicianName,
+        "dateofappointment":item.dateofappointment,
+        "Time_slot":item.startTime+'-'+item.endTime,
+        "History":"None","isToday":isToday -->
+      <tr id="somerow" *ngFor="let data of edithist">
+        
+          
+          
+          <td>{{data.meetId}}</td>
+        
+        <td>{{data.description}}</td>
+        <td>{{data.phyname}}</td>
+        <td>{{data.patientname}}</td>
+        <td>
+            <span *ngIf="data.apptDt===today" class="badge bg-success"> {{data.apptDt}}</span>
+            <span *ngIf="data.apptDt!==today" class="badge bg-primary"> {{data.apptDt}}</span>
+          </td>
+      
+        <td>{{data.apptFrTime}}</td>
+        <td>{{data.apptToTime}}</td>
+        <td id="status" [ngStyle]="{'color':getTheColor('unattended') } " style="font-weight: bold;">
+          {{data.status}}</td>
+       
+<td>{{data.changedbyId}}</td>
+<td>{{data.modifiedTs}}</td>
+       
+        <!-- <td>Diagnosis</td>
+        <td>Eye Consultation</td>
+        <td>Dr. Khan</td>
+        <td><span class="badge bg-success"> 2022-04-01</span>
+           </td>
+        <td>10 A.M. - 11 A.M.</td>
+        <td>None</td> -->
+       
+      </tr>
+      
+    </tbody>
+  </table>
+

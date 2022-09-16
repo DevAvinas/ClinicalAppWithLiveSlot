@@ -1,0 +1,19 @@
+<div class="d-flex" id="wrapper">
+  <app-sidebar></app-sidebar>
+  <div id="page-content-wrapper">
+
+    <app-navbar *ngIf="getRole()=='patient'"></app-navbar>
+    <app-admin-navbar *ngIf="getRole()=='admin'"></app-admin-navbar>
+    <pro-navbar *ngIf="getRole()=='Doctor'"></pro-navbar> 
+    <app-nurse-navbar *ngIf="getRole()=='Nurse'"></app-nurse-navbar>
+    <app-guestnavbar *ngIf="getRole()=='guest'"></app-guestnavbar>
+    <div class="container-fluid"> 
+      
+      <router-outlet></router-outlet>
+      <br>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+
+

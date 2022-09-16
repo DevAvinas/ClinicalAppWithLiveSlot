@@ -1,0 +1,32 @@
+{
+    "postalcodes": [
+        {
+            "id": "636001",
+            "city": "Salem",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "dial_code": "+91"
+        },
+        {
+            "id": "260465",
+            "city": "New Delhi",
+            "state": "Delhi",
+            "country": "India",
+            "dial_code": "+91"
+        },
+        {
+            "id": "600028",
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "dial_code": "+91"
+        },
+        {
+            "id": "90002",
+            "city": "Los Angeles",
+            "state": "California",
+            "country": "United States",
+            "dial_code": "+1"
+        }
+    ]
+}

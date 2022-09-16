@@ -1,0 +1,55 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: patient-module-service
+        uri: http://localhost:8082
+        predicates:
+        - Path=/api/**
+      
+      - id: provider-module-service
+        uri: http://localhost:8087
+        predicates:
+        - Path=/api/**
+
+      - id: capstone-authentication-service
+        uri: http://localhost:8083
+        predicates:
+        - Path=/api/**  
+          
+  main:
+    web-application-type: reactive
+    
+  mvc:
+    pathmatch:
+      matching:
+        strategy: ant-path-matcher
+        
+  profiles:
+    active: dev
+  # Database
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ProviderFinalDb
+    username: postgres
+    password: root
+  # JPA properties
+  jpa:
+    hibernate:
+      ddl-auto: update # When you launch the application for the first time - switch "none" at "create"
+    show-sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+    generate-ddl: true    
+    
+    
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+

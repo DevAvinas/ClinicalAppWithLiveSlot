@@ -1,0 +1,25 @@
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td, th {
+  width: 12%;
+}
+
+
+
+.container{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+

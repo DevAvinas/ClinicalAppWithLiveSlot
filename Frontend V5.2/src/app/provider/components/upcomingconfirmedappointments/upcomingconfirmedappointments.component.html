@@ -1,0 +1,81 @@
+<div *ngIf="alertflag1">
+  <br>
+  <br>
+  <br>
+  <br>
+<div   class="alert alert-info" role="alert">
+  Sorry ! No upcoming appointments found
+ </div>
+</div>
+<div class="table-responsive" *ngIf="!alertflag1" class="table-responsive">
+<br>
+<br>
+<div style="text-align: center; font-style: italic;font-weight: bold;">
+<span class="dot2"></span> Today's Appointments 
+<span class="dot1"></span> Upcoming Appointments
+</div>
+<br>
+<br>
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Meeting Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Physician Name</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Date of Appointment</th>
+        <th scope="col">Appointment type</th>
+        <th scope="col">start time</th>
+        <th scope="col">End time</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        <!-- "Subject":item.Subject,
+        "description" :"string",
+        "physicianName":physicianName,
+        "dateofappointment":item.dateofappointment,
+        "Time_slot":item.startTime+'-'+item.endTime,
+        "History":"None","isToday":isToday -->
+      <tr *ngFor="let data of appointments">
+        <td>{{data.meetingTitle}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.phyname}}</td>
+        <td>{{data.patientname}}</td>
+        <td>
+            <span *ngIf="data.apptDt===today" class="badge bg-success"> {{data.apptDt}}</span>
+            <span *ngIf="data.apptDt!==today" class="badge bg-primary"> {{data.apptDt}}</span>
+          </td>
+        <td>{{data.apptType}}</td>
+        <td>{{data.apptFrTime}}</td>
+        <td>{{data.apptToTime}}</td>
+        <td>
+          <span *ngIf="data.apptType==='CN'? true : false"><a  href="provider/visitpagepro/{{data.meetId}}"   class="button" id="button">viewdetails</a></span> 
+          <span *ngIf="data.apptType==='DC'? true : false"><a  (click)="acceptFunction(data.meetId)"   class="button" id="button">Complete</a></span> 
+
+        </td>
+        
+     
+        <!-- <td>Diagnosis</td>
+        <td>Eye Consultation</td>
+        <td>Dr. Khan</td>
+        <td><span class="badge bg-success"> 2022-04-01</span>
+           </td>
+        <td>10 A.M. - 11 A.M.</td>
+        <td>None</td> -->
+        <td> <button (click)="rescheduleFunction(data)" class="button2">Reschedule</button></td>
+        <td> <button (click)="unattendedFunction(data.meetId)" class="button3">Unattended</button></td>
+      </tr>
+      <tr *ngIf="!appointments || appointments.length==0">
+        <td colspan="11">
+            No Appointments to display!!
+        </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>

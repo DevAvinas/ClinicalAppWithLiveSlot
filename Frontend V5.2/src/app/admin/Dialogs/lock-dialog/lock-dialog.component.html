@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{actionBtn}} User</h1>
+<div mat-dialog-content>
+    Please confirm if you want to {{actionBtn}} the {{userRole}}:
+    <ul style="list-style-type:none">
+        <li>Name: {{name}}</li>
+        <li>Id: {{userId}}</li>
+        <li>Role: {{userRole}}</li>
+        <li>Email: {{email}}</li>
+    </ul>
+    
+    <div mat-dialog-action [align]="'start'">
+        <button mat-raised-button color="warn" (click)="lockUnlock()">{{actionBtn}}</button>
+        <button mat-stroked-button color="primary" mat-dialog-close style="margin-left:10px; border: none;">Cancel</button>
+    </div>
+    
+   
+</div>

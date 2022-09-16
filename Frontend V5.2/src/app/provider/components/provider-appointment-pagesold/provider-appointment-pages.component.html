@@ -1,0 +1,45 @@
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Meeting Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Physician Name</th>
+        <th scope="col">Patient Name</th>
+        <th scope="col">Date of Appointment</th>
+        <th scope="col">Appointment type</th>
+        <th scope="col">start time</th>
+        <th scope="col">End time</th>
+       
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+        <!-- "Subject":item.Subject,
+        "description" :"string",
+        "physicianName":physicianName,
+        "dateofappointment":item.dateofappointment,
+        "Time_slot":item.startTime+'-'+item.endTime,
+        "History":"None","isToday":isToday -->
+      <tr *ngFor="let data of appointments">
+        <td>{{data.meetingTitle}}</td>
+        <td>{{data.description}}</td>
+        <td>{{data.phyname}}</td>
+        <td>{{data.patientname}}</td>
+        <td>{{data.apptDt}}</td>
+        <td>{{data.apptType}}</td>
+        <td>{{data.apptFrTime}}</td>
+        <td>{{data.apptToTime}}</td>
+        <td scope="col"><a href="/visitpagepro/{{data.meetId}}" class="button">viewdetails</a></td>
+        <!-- <td>Diagnosis</td>
+        <td>Eye Consultation</td>
+        <td>Dr. Khan</td>
+        <td><span class="badge bg-success"> 2022-04-01</span>
+           </td>
+        <td>10 A.M. - 11 A.M.</td>
+        <td>None</td> -->
+
+      </tr>
+      
+    </tbody>
+  </table>

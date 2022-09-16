@@ -1,0 +1,129 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+<div class="container ">
+  <!-- <div class="form-group row justify-content-center"> -->
+  
+        <div class="card">
+          <div class="card-header">
+              Schedule an Appointment
+            </div>
+            <div class="card-body">
+              <form [formGroup]="form" (submit)="createAppt()">
+  
+                  <!-- Name control -->
+                  <div class="form-group">
+
+
+
+                  <!-- <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Physician*</label>
+                      <div class="col-sm-8">
+              
+                          <select formControlName="phy_id" (selected)="phySelected()" class="form-controls" [ngClass]="{ 'is-invalid': (submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid) }">
+                            <option value="none">Select option</option>
+                            <option value="1">S Khan</option>
+                            <option value="2">V.S. Subramanium</option>
+                            <option value="3">Ashoknath Vijay</option>
+                            <option value="4">P.S. MURMU</option>
+                          </select>
+                          <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['phy_id'].errors) || (!f['phy_id'].pristine && f['phy_id'].invalid)">
+                          <div *ngIf="f['phy_id'].errors?.['required']">Relationship is required</div>
+                      </div>
+                      </div>
+                  </div> -->
+
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Phy ID *</label>
+                      <div class="col-sm-8">
+                        <!--                     
+                                                <select formControlName="phy_id" class="form-controls" [ngClass]="{ 'is-invalid': (submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid) }">
+                        
+                        
+                                                </select> -->
+                                                <ng-select (change)="phySelected($event)" appendTo="body" placeholder="Search Physician">
+                                                <ng-option   *ngFor="let items of phyArr" [value]="items">{{items.firstname}}
+                                              </ng-option></ng-select>
+                                                <div class="invalid-feedback"
+                                                *ngIf="(submitted  && f['phy_id'].errors) || (!f['phy_id'].pristine && f['phy_id'].invalid)">
+                                                <div *ngIf="f['phy_id'].errors?.['required']">Physician Name required</div>
+                                            </div>
+                                            </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                     Meeting Title*</label>
+                    <div class="col-sm-8">
+            
+                        <input readonly type="text" formControlName="Subject" class="form-control" placeholder="Enter Title"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['Subject'].errors) || (!f['Subject'].pristine && f['Subject'].invalid) }"
+                        >
+                        <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['Subject'].errors) || (!f['Subject'].pristine && f['Subject'].invalid)">
+                        <div *ngIf="f['Subject'].errors?.['required']">Title cannot be empty.</div>
+                        <div *ngIf="f['Subject'].errors?.['minlength']">Please must be 2 charecters atleast</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class=" col-sm-4 col-form-label">
+                      Description*</label>
+                    <div class="col-sm-8">
+            
+                        <input  type="text" formControlName="description" class="form-control" placeholder="Enter name"
+                        [ngClass]="{ 'is-invalid': (submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid) }"
+                        >
+                        <div class="invalid-feedback"
+                        *ngIf="(submitted  && f['description'].errors) || (!f['description'].pristine && f['description'].invalid)">
+                        <div *ngIf="f['description'].errors?.['required']">Description cannot be empty</div>
+                        <div *ngIf="f['description'].errors?.['minlength']">Please don’t use abbreviations</div>
+                    </div>
+                    </div>
+                </div>
+                  <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Date*</label>
+                      <div class="col-sm-8">
+              
+                          <input type="date" [min]="now" formControlName="dateofappointment" class="form-control" placeholder="Enter name" (change)="dateSelected()"
+                          [ngClass]="{ 'is-invalid': (submitted  && f['dateofappointment'].errors) || (!f['dateofappointment'].pristine && f['dateofappointment'].invalid) }"
+                          >
+                          <div class="invalid-feedback" 
+                          *ngIf="(submitted  && f['dateofappointment'].errors) || (!f['dateofappointment'].pristine && f['dateofappointment'].invalid)">
+                          <div *ngIf="f['dateofappointment'].errors?.['required']">dateofappointment cannot be blank</div>
+                          <div *ngIf="f['dateofappointment'].errors?.['dateofappointment']">Incorrect dateofappointment format</div>                           </div>
+                  </div>
+                  </div>
+                  <div class="form-group row">
+                      <label class=" col-sm-4 col-form-label">
+                        Available slots*</label>
+                      <div class="col-sm-8">
+              
+                          <select formControlName="available_slot" class="form-controls" (change)="updateTime($event)" [ngClass]="{ 'is-invalid': (submitted  && f['available_slot'].errors) || (!f['available_slot'].pristine && f['available_slot'].invalid) }">
+                              <option *ngFor="let slots of timeSlots" [value]="slots.key" >{{slots.value}}</option>  
+                          </select>                            
+                          
+                          <div class="invalid-feedback"
+                          *ngIf="(submitted  && f['available_slot'].errors) || (!f['available_slot'].pristine && f['available_slot'].invalid)">
+                          <div *ngIf="f['available_slot'].errors?.['required']">Slot is required</div>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="!!message">
+                    {{message}}
+                  </div>
+                  <div class="form-group text-center">
+                      <button type="submit" [disabled]="disablebutton"  class="btn btn-success btn-sm">Submit</button>
+                  </div>
+                </div>
+          
+              </form>
+                </div>
+                </div>
+            
+                <!-- </div> -->
+  
+              </div>
+              

@@ -1,0 +1,144 @@
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+
+<!-- <h2> <span class="badge bg-secondary">Scheduling</span></h2> -->
+<br>
+<div class="accordion" id="accordionExample">
+    <!-- <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+         Data Collection Status
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div class="container">
+
+                <div class="row">  
+                  <div class="col-lg-4 col-sm-8">
+                      Doctor
+                  </div>      
+                    <div class="col-lg-4 col-sm-8">
+                      <select  #doctor (change)="updateTime(doctor.value)">
+                        <option value="none">Select option</option>
+                        <option value="1">S Khan</option>
+                        <option value="2">V.S. Subramanium</option>
+                        <option value="3">Ashoknath Vijay</option>
+                        <option value="4">P.S. MURMU</option>
+
+                    </select>
+                      
+                    </div>
+                    </div>
+                    <br>
+
+                    <div class="row">
+                      <div class="col-lg-4 col-sm-8">
+                       Report Status
+                      </div>
+                      <div class="col-lg-4 col-sm-8">
+                        {{statusArray}}
+                      </div> 
+                    </div>
+                      <br>
+
+                <div class="row">
+                  <label class=" col-sm-4 col-form-label">
+                    Date*</label>
+                  <div class="col-sm-8">
+          
+                      <input type="date" [min]="now" placeholder="Enter name">
+
+              </div>
+              </div>
+              <br>
+              <div class="row">
+                  <label class=" col-sm-4 col-form-label">
+                    Available slots*</label>
+                  <div class="col-sm-8">
+          
+                      <select>
+                          <option *ngFor="let slots of timeSlots" [value]="slots.key" >{{slots.value}}</option>
+
+                      </select>                            
+                      
+
+                  </div>
+              </div>
+              <br>
+            </div>
+      </div>
+    </div> -->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Add Appointment
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+                  <app-book-data-collection-appointment (setUsersList)="setUsersList()"></app-book-data-collection-appointment>
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Edit / Delete Appointment
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+          <table class="table table-borderless">
+            <thead>
+              <tr>
+                <th scope="col">Physician Name</th>
+                <th scope="col">Description </th>
+                <th scope="col">Date </th>
+                <th scope="col">Time Slot</th>
+                <!-- <th scope="col">History</th> -->
+                <th scope="col">Edit</th>
+                <th scope="col">Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let item of phyArr">
+                    <td>{{item.phyname}}</td>
+                    <td>{{item.description}}</td>
+                    <td>{{item.apptDt | date:'dd/MM/yyyy'}}</td>
+                    <td>{{item.apptFrTime}} - {{item.apptToTime }}</td>
+                    <!-- <td>{{item.}}</td> -->
+                    <td><button type="button" class="btn btn-primary" (click)="editItem(item)">Edit</button>
+                    </td>
+                    <td><button type="button" class="btn btn-danger" (click)="declineAppt(item)">Delete</button>
+                    </td>
+                  </tr>
+                            <!-- {
+                "meetId": "1",
+                "meetingTitle": "Appt of PT005-PR004",
+                "description": "cough and cold",
+                "phyId": "PR004",
+                "phyname": "John Doe",
+                "apptDt": "2022-04-15",
+                "apptFrTime": "09:00:00",
+                "apptToTime": "09:59:00",
+                "apptType": "CN",
+                "reason": "",
+                "status": "Req",
+                "patientId": "PT005",
+                "patientname": "Avinash Kumar",
+                "changedbyId": "",
+                "creationDt": "2022-04-15T14:58:18.04727"
+            } -->
+            </tbody>
+          </table> 
+          <!-- <app-edit-data-collection-appointment [addressparent]="addresscarrier"></app-edit-data-collection-appointment>      </div> -->
+
+        
+        </div>
+      </div>
+    </div>
+  </div>

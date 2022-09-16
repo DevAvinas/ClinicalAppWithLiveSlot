@@ -1,0 +1,29 @@
+.grey-bg {
+    background-color: #F5F7FA;
+}
+
+#ctgh-Stats {
+    margin-top: 2%;
+}
+
+.media-body {
+    align-items: center;
+}
+
+#stats-subtitle .card:hover {
+    background-color: rgb(130, 221, 175);
+    color: white;
+    transition: 300ms;
+}
+
+button {
+    color: white;
+}
+
+button:hover {
+    color: solid black;
+}
+
+a{
+    color: inherit;
+}

@@ -1,0 +1,171 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<div class="container ">
+    <!-- <div class="form-group row justify-content-center"> -->
+
+    <div class="card">
+        <div class="card-header">
+            Provider: Sign Up
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="addProvider()">
+                <div class="form-group">
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Title*</label>
+                        <div class="col-sm-8">
+
+                            <label class="radio-inline"><input type="radio" formControlName="title"
+                                    class="form-controls" checked="checked" value="Mr"
+                                    style="margin-bottom: 10px">Mr.</label>
+
+                            <label class="radio-inline"> <input type="radio" formControlName="title"
+                                    class="form-controls" value="Ms" style="margin-bottom: 10px"> Ms.</label>
+
+                            <label class="radio-inline"><input type="radio" formControlName="title"
+                                    class="form-controls" checked="checked" value="Mrs"
+                                    style="margin-bottom: 10px">Mrs.</label>
+
+                            <label class="radio-inline"><input type="radio" formControlName="title"
+                                    class="form-controls" checked="checked" value="Dr"
+                                    style="margin-bottom: 10px">Dr.</label>
+
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['title'].errors) || (!f['title'].pristine && f['title'].invalid)">
+                                <div *ngIf="f['title'].errors?.['required']">Title cannot be blank</div>
+                                <div *ngIf="f['title'].errors?.['access_flag']">Incorrect access_flag format</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            First Name*</label>
+                        <div class="col-sm-8">
+
+                            <input type="text" formControlName="firstname" class="form-control"
+                                placeholder="Enter First name"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['firstname'].errors) || (!f['firstname'].pristine && f['firstname'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['firstname'].errors) || (!f['firstname'].pristine && f['firstname'].invalid)">
+                                <div *ngIf="f['firstname'].errors?.['required']">First name cannot be empty.</div>
+                                <div *ngIf="f['firstname'].errors?.['minlength']">Please don’t use abbreviations.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Last Name*</label>
+                        <div class="col-sm-8">
+
+                            <input type="text" formControlName="lastname" class="form-control"
+                                placeholder="Enter Last name"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['lastname'].errors) || (!f['lastname'].pristine && f['lastname'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['lastname'].errors) || (!f['lastname'].pristine && f['lastname'].invalid)">
+                                <div *ngIf="f['lastname'].errors?.['required']">Last name cannot be empty.</div>
+                                <div *ngIf="f['lastname'].errors?.['minlength']">Please don’t use abbreviations.”
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Email*</label>
+                        <div class="col-sm-8">
+
+                            <input type="text" formControlName="email" class="form-control" placeholder="Enter Email"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['email'].errors) || (!f['email'].pristine && f['email'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['email'].errors) || (!f['email'].pristine && f['email'].invalid)">
+                                <div *ngIf="f['email'].errors?.['required']">Email cannot be empty.</div>
+                                <div *ngIf="f['email'].errors?.['pattern']">Please enter your email address e.g.
+                                    exampleusername@ctgh.com</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Date Of Birth*</label>
+                        <div class="col-sm-8">
+
+                            <input type="date" name="dob" max="2004-04-01" formControlName="dob" class="form-control"
+                                placeholder="Enter DOB"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['dob'].errors) || (!f['dob'].pristine && f['dob'].invalid) }">
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['dob'].errors) || (!f['dob'].pristine && f['dob'].invalid)">
+                                <div *ngIf="f['dob'].errors?.['required']">Please enter a valid date.</div>
+                                <div *ngIf="f['dob'].errors?.['dob']">Please enter a valid date of birth.</div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                            Role*</label>
+                        <div class="col-sm-8">
+
+                            <select formControlName="role" class="form-controls"
+                                [ngClass]="{ 'is-invalid': (submitted  && f['role'].errors) || (!f['role'].pristine && f['role'].invalid) }">
+                                <option value="Doctor">Physician</option>
+                                <option value="Nurse">Nurse</option>
+                                <option value="Admin">Admin </option>
+                            </select>
+                            <div class="invalid-feedback"
+                                *ngIf="(submitted  && f['role'].errors) || (!f['role'].pristine && f['role'].invalid)">
+                                <div *ngIf="f['role'].errors?.['required']">Role is required</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                          Password*</label>
+                        <div class="col-sm-8">
+                
+                            <input type="password" name="password" formControlName="password" class="form-control" placeholder="Enter Password"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['password'].errors) || (!f['password'].pristine && f['password'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['password'].errors) || (!f['password'].pristine && f['dob'].invalid)">
+                            <div *ngIf="f['password'].errors?.['required']">Password cannot be empty
+                            </div>
+                            <!-- <div *ngIf="f['password'].errors?.['pattern']">Password is weak. Please re-enter the password with a minimum of one Uppercase letter, one lowercase letter, one number and minimum length of 8 characters
+                            </div> -->
+                    <!-- <div *ngIf="f['password'].errors?.['minlength']">Minimum 6 characters required</div>   
+                        </div>
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="form-group row">
+                        <label class=" col-sm-4 col-form-label">
+                           Confirm Password*</label>
+                        <div class="col-sm-8">
+                
+                            <input type="password" name="confirmpassword" formControlName="confirmpassword" class="form-control" placeholder="Enter Confirmed Password"
+                            [ngClass]="{ 'is-invalid': (submitted  && f['confirmpassword'].errors) || (!f['confirmpassword'].pristine && f['confirmpassword'].invalid) }"
+                            >
+                            <div class="invalid-feedback"
+                            *ngIf="(submitted  && f['confirmpassword'].errors) || (!f['confirmpassword'].pristine && f['dob'].invalid)">
+                            <div *ngIf="f['confirmpassword'].errors?.['required']">Password cannot be empty</div>
+                            <div *ngIf="f['confirmpassword'].errors?.['m']">Passwords do not match. Please re-enter the password”</div>
+                        </div>
+                        </div>
+                    </div> -->
+
+                    <div class="form-group text-center">
+                        <button type="submit" [disabled]="!form.valid" class="btn btn-success btn-sm">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- </div> -->
+
+</div>

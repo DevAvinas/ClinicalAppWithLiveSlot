@@ -1,0 +1,172 @@
+<link rel="stylesheet" type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+<link rel="stylesheet" type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+<link rel="stylesheet" type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+<link rel="stylesheet" type="text/css"
+    href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+
+<div class="grey-bg container-fluid">
+    
+
+    <section id="stats-subtitle">
+        <div class="row">
+            <div class="col-12 mt-3 mb-1">
+                <h4 class="text-uppercase">Management</h4>
+                
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-6 col-md-12">
+                <a href='/admin/updatePatient'>
+                    <div class="card overflow-hidden">
+                        <div class="card-content" style="margin:0 auto;margin-top: 2%;">
+                            <div class="card-body cleartfix">
+                                <div class="media align-items-stretch">
+                                    <div class="media-body">
+                                        <h1>Patient Management</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="col-xl-6 col-md-12">
+                <a href='/admin/updateEmployee'>
+                    <div class="card">
+                        <div class="card-content" style="margin:0 auto; margin-top: 2%;">
+                            <div class="card-body cleartfix">
+                                <div class="media align-items-stretch">
+
+                                    <div class="media-body">
+                                        <h1>Provider Management</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            
+
+        </div>
+        <div class="row">
+            <div class="col-xl-6 col-md-12">
+                <a href='/admin/updateData'>
+                    <div class="card overflow-hidden">
+                        <div class="card-content" style="margin:0 auto;margin-top: 2%;">
+                            <div class="card-body cleartfix">
+                                <div class="media align-items-stretch">
+                                    <div class="media-body">
+                                        <h1>Data Management</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-xl-6 col-md-12">
+                <a (click)="registerProviderDialog()">
+                    <div class="card overflow-hidden">
+                        <div class="card-content" style="margin:0 auto;margin-top: 2%;">
+                            <div class="card-body cleartfix">
+                                <div class="media align-items-stretch">
+                                    <div class="media-body">
+                                        <h1>Register Employee</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="ctgh-Stats">
+        <div class="row">
+            <div class="col-12 mt-3 mb-1">
+                <h4 class="text-uppercase">Stats</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="icon-book-open primary font-large-2 float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>{{apptCount}}</h3>
+                                    <span>Appointments for the Month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="icon-plus warning font-large-2 float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>{{patCount}}</h3>
+                                    <span>Patients</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="icon-user success font-large-2 float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>{{phyCount}}</h3>
+                                    <span>Physicians</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-sm-6 col-12">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-body">
+                            <div class="media d-flex">
+                                <div class="align-self-center">
+                                    <i class="icon-user-female danger font-large-2 float-left"></i>
+                                </div>
+                                <div class="media-body text-right">
+                                    <h3>{{nurseCount}}</h3>
+                                    <span>Nurse</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

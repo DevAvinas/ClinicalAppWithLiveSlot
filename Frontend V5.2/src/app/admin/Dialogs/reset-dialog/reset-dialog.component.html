@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>Reset Password</h1>
+<div mat-dialog-content>
+    Please confirm if you want to Reset Password the Employee:
+    <ul style="list-style-type:none">
+        <li>Name: {{name}}</li>
+        <li *ngIf="!!empRole">Id: {{empid}}</li>
+        <li *ngIf="!!empRole">Role: {{empRole}}</li>
+        <li>Email: {{email}}</li>
+    </ul>
+    
+    <div mat-dialog-action [align]="'start'">
+        <button mat-raised-button color="warn" (click)="resetPassword()">Reset</button>
+        <button mat-stroked-button color="primary" mat-dialog-close style="margin-left:10px; border: none;">Cancel</button>
+    </div>
+    
+   
+</div>

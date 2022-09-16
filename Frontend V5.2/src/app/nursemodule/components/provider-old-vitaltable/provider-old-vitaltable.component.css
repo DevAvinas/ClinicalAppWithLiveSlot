@@ -1,0 +1,35 @@
+.center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  table, th, td {
+    border: 1px solid white;
+    border-collapse: collapse;
+    color: black;
+    text-align: center;
+    
+  }
+  th, td {
+    background-color: #96D4D4;
+  } 
+  p{
+      text-align: center;
+      font-weight: 500;
+  }
+
+  table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 12%;
+  }

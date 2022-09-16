@@ -1,0 +1,30 @@
+<br>
+<h1> <span class="badge badge-warning">Notifications</span></h1>
+<ng-container >
+<!-- <div style=" margin-right: 35%;" *ngIf="data.status=='reschedule'"class="alert alert-info" role="alert">
+    Your appointment has been rescheduled to <strong>{{data.apptDt}}</strong>
+    having time slot <strong>{{data.apptFrTime}} - {{data.apptToTime}}</strong>
+  </div>
+
+<div *ngIf="data.status=='decline'"class="alert alert-danger" role="alert">
+    Your appointment dated <strong>10-04-2022</strong> was Declined.
+  </div> -->
+  <div class="container">
+      <div *ngFor="let data of historyArr">
+        <ngb-toast style="color: cornflowerblue; width: auto;" *ngIf="data.reason=='reschedule'" header="Reschedule Notification - Updated at : {{data.modifiedTs}}" [autohide]="false">
+          Your appointment with Meeting Id <strong> {{data.meetId}}</strong> has been rescheduled to <strong>{{data.apptDt}}</strong>
+          having time slot <strong>{{data.apptFrTime}} - {{data.apptToTime}}</strong>
+        </ngb-toast>
+        <ngb-toast style="color: red; width: auto;" *ngIf="data.status=='decline'"  header="Decline Notification - Updated at : {{data.modifiedTs}}" [autohide]="false">
+          <h5>Your appointment dated <strong>{{data.apptDt}}</strong> was Declined with Meeting Id: <strong> {{data.meetId}}</strong>   </h5>
+        </ngb-toast>
+          <br>
+
+    </div>
+
+  </div>
+
+
+</ng-container>
+
+
