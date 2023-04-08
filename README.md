@@ -5,11 +5,11 @@
 4. SQL
 5. Web Server
 
-5.1 Tomcat
-
-6. Deployment Tools:
-
-6.1 Docker
+   Tomcat
+   
+ Deployment Tools:
+ 
+   Docker
 
 # ClinicalAppWithLiveSlot![Screenshot (302)](https://user-images.githubusercontent.com/31414920/190703614-953e7afc-c40a-4bca-93f3-d506221571b0.png)
 ![Screenshot (248)](https://user-images.githubusercontent.com/31414920/190703846-91cde890-6963-4589-a558-62c7b25c6ad7.png)
