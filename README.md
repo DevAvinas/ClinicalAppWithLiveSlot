@@ -1,4 +1,4 @@
-#TechStack
+# TechStack
 1. Java
 2. Angular
 3. Spring Boot
