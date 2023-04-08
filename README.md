@@ -4,8 +4,11 @@
 3. Spring Boot
 4. SQL
 5. Web Server
+
   5.1 Tomcat
+  
 6. Deployment Tools:
+
   6.1 Docker
 
 # ClinicalAppWithLiveSlot![Screenshot (302)](https://user-images.githubusercontent.com/31414920/190703614-953e7afc-c40a-4bca-93f3-d506221571b0.png)
