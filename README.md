@@ -7,7 +7,7 @@
 
    Tomcat
    
- Deployment Tools:
+ Deployment Tool:
  
    Docker
 
